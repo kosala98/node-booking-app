@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   const { title, load, reps } = req.body;
 
   try {
-    const booking = await Booking.create(title, load, reps);
+    const booking = await Booking.create({ title, load, reps });
     res.status(200).json(booking);
   } catch (error) {
     res.status(400).json({ error: error.message });
