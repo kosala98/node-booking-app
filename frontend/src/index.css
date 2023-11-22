@@ -3,16 +3,17 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #79AC78;
   --error: #e7195a;
 }
 body {
-  background: #f1f1f1;
+  background: #D0E7D2;
   margin: 0;
   font-family: "Poppins";
+  background-image: url("https://www.transparenttextures.com/patterns/shattered.png");
 }
 header {
-  background: #fff;
+  background: #79AC78;
 }
 header .container {
   max-width: 1400px;
@@ -25,6 +26,7 @@ header .container {
 header a {
   color: #333;
   text-decoration: none;
+  font-size: 19px;
 }
 .pages{
   max-width: 1400px;
@@ -38,7 +40,7 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
-.workout-details {
+.booking-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
@@ -46,17 +48,17 @@ header a {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
-.workout-details h4 {
+.booking-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
-.workout-details p {
+.booking-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
-.workout-details span {
+.booking-details span {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -83,9 +85,10 @@ input {
 form button {
   background: var(--primary);
   border: 0;
-  color: #fff;
+  color: #333;
   padding: 10px;
   font-family: "Poppins";
+  font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -96,4 +99,8 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid var(--error);
 }
