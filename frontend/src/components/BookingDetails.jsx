@@ -1,16 +1,25 @@
 import React from "react";
 import { useBookingsContext } from "../hooks/useBookingsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // Date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const BookingDetails = ({ booking }) => {
   const { dispatch } = useBookingsContext();
+  const user = useAuthContext();
 
   const handleClick = async () => {
+    if (!user) {
+      return;
+    }
     const response = await fetch("/api/bookings/" + booking._id, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
+
     const json = await response.json();
 
     if (response.ok) {

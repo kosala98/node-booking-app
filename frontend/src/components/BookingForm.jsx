@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useBookingsContext } from "../hooks/useBookingsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const BookingForm = () => {
   const { dispatch } = useBookingsContext("");
+  const { user } = useAuthContext();
+
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
@@ -12,6 +15,11 @@ const BookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
+
     const booking = { title, load, reps };
 
     const response = await fetch("api/bookings", {
@@ -19,6 +27,7 @@ const BookingForm = () => {
       body: JSON.stringify(booking),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
 
