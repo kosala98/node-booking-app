@@ -13,13 +13,13 @@ const BookingDetails = ({ booking }) => {
     if (!user) {
       return;
     }
+
     const response = await fetch("/api/bookings/" + booking._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
     });
-
     const json = await response.json();
 
     if (response.ok) {
